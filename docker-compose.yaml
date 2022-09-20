@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  fastify:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    container_name: fastify
+    command: >
+      /bin/sh -c "
+        echo Waiting for mongodb service start...;
+        npm run dev
+      "
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app

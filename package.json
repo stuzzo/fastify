@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "fastify": "^4.6.0",
+    "fastify-cli": "^5.4.2"
+  },
+  "main": "app.js",
+  "scripts": {
+    "dev": "./node_modules/nodemon/bin/nodemon.js -r dotenv/config src/app.js",
+    "test": "tap",
+    "format": "prettier --write src/*",
+    "start": "node src/app.js",
+    "start:db": "docker-compose up -d db",
+    "migrate:up": "MIGRATE_ACTION=do node migration.js",
+    "migrate:down": "MIGRATE_ACTION=undo node migration.js"
+  },
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "prettier": "2.7.1"
+  }
+}
